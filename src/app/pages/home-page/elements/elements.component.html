@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between homePage__element">
+    <div class="d-flex justify-content-between flex-wrap elements">
+        <div class="bg-light p-3 element" *ngFor="let item of elements1">
+            <i class="bi me-2" [class]="item.icon"></i>
+            <b>{{ item.title }}</b>
+            <i class="bi bi-eye float-end"></i>
+            <h5 class="pt-1 mt-2 border-top">Total</h5>
+            <p class="mb-2">{{ item.value }}$100.00</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between flex-wrap elements">
+        <div class="bg-light p-3 element" *ngFor="let item of elements2">
+            <i class="bi me-2" [class]="item.icon"></i>
+            <b>{{ item.title }}</b>
+            <i class="bi bi-eye float-end"></i>
+            <h5 class="pt-1 mt-2 border-top">Total</h5>
+            <p class="mb-2">{{ item.value }}$100.00</p>
+        </div>
+    </div>
+</div>

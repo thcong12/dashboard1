@@ -1,0 +1,109 @@
+<form class="needs-validation" [formGroup]="productDetailForm" (submit)="changeProductDetail()">
+    <div class="row">
+        <div class="col-12">
+            <label for="name" class="form-label">Categlory</label>
+            <div class="d-flex gap-2" [formArrayName]="controlDetail.categlory">
+                <div *ngFor="let cate of categloryList?.controls; let i = index" [formGroupName]="i">
+                    <p-chip [label]="cate.value.cateName" styleClass="p-mr-2 " [removable]="true" (onRemove)="removeCateglory(i)"></p-chip>
+                </div>
+                <button type="button" class="btn bi bi-plus-circle-fill" (click)="displayModalCategolry = true"></button>
+                <p-dialog header="Header" [(visible)]="displayModalCategolry" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                    <div class="d-flex flex-wrap gap-2">
+                        <p-chip [style]="{ cursor: 'pointer' }" *ngFor="let item of categlorys" [label]="item.cateName" styleClass="p-mr-2 " (click)="addCateglory(item)"></p-chip>
+                    </div>
+                </p-dialog>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="name " class="form-label">Feature</label>
+            <div class="d-flex gap-2" [formArrayName]="controlDetail.feature">
+                <div *ngFor="let cate of featureList?.controls; let i = index" [formGroupName]="i">
+                    <p-chip [label]="cate.value.featureName" styleClass="p-mr-2 " [removable]="true"></p-chip>
+                </div>
+                <button type="button" class="btn bi bi-plus-circle-fill" (click)="displayModdalFeature = true"></button>
+                <p-dialog header="Header" [(visible)]="displayModdalFeature" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+                    <div class="d-flex flex-wrap gap-2">
+                        <p-chip *ngFor="let item of features" [label]="item.featureName" styleClass="p-mr-2 "></p-chip>
+                    </div>
+                </p-dialog>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="name" class="form-label">Img List</label>
+            <div class="mb-4 input-group">
+                <input #src type="text" class="me-2 form-control" id="name" placeholder="Src image" />
+                <input #title type="text" class="form-control" id="name" placeholder="Alt image" />
+                <button type="button" (click)="addImage(src.value, title.value)" class="col-sm-1 btn bi bi-plus-circle"></button>
+            </div>
+            <div class="px-1 row" [formArrayName]="controlDetail.imgList">
+                <div class="mb-2 col-4 imgList" *ngFor="let img of imgList?.controls; let i = index" [formGroupName]="i">
+                    <img [alt]="img.get(controlDetail.title)?.value" [src]="img.get(controlDetail.url)?.value" height="142 " width="255 " />
+                    <div class="imgList__hover">
+                        <button class="bi bi-eye"></button>
+                        <button (click)="deleteImg(i)" class="bi bi-trash"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <label for="developer " class="form-label">Developer</label>
+            <select class="form-select" [formControlName]="controlDetail.developer">
+      <option [value]="i._id" *ngFor="let i of developers">
+        {{ i.devName }}
+      </option>
+    </select>
+        </div>
+        <!-- <div class="col-12">
+    <label class="form-label">System requirement</label>
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div>
+  <div class="col-sm-4">
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Alt image"
+    />
+  </div> -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>

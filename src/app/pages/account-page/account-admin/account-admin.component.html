@@ -1,0 +1,49 @@
+<div class="row mb-3">
+    <h1 class="col">Account Admin</h1>
+    <div class="col d-flex gap-1 justify-content-between align-items-center">
+        <select class="form-select" aria-label="Default select example">
+      <option selected>Sort value</option>
+      <option>Name</option>
+      <option>Time</option>
+    </select>
+        <select class="form-select" aria-label="Default select example">
+      <option selected>Filter Value</option>
+      <option>Categlory</option>
+      <option>Active</option>
+    </select>
+        <button type="button" class="btn btn-primary text-nowrap">
+      Add new Admin
+    </button>
+    </div>
+</div>
+
+<div class="px-3">
+    <table class="table table-light px-2">
+        <thead>
+            <tr class="text-center row ">
+                <th scope="row" class="col-1 border-end">#</th>
+                <th scope="col" class="col border-end">User Name</th>
+                <th scope="col" class="col border-end">Email</th>
+                <th scope="col" class="col border-end">Type Admin</th>
+                <th scope="col" class="col border-end">Active</th>
+                <th scope="col" class="col border-end">Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="row text-center" *ngFor="let item of accountAdmins;let i = index">
+                <th scope="row" class="col-1 py-3">{{i+1}}</th>
+                <td class="col py-3">{{item.userName}}</td>
+                <td class="col py-3">{{item.email}}</td>
+                <td class="col py-3 text-break">{{item.typeAdmin.adminType}}</td>
+                <td class="col py-3">
+                    <span class="px-3 py-1 border border-2 border-secondary rounded ">{{item.isActive}}</span>
+                </td>
+                <td class="col">
+                    <button class="btn btn-success">
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
